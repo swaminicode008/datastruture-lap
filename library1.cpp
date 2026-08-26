@@ -1,5 +1,5 @@
 #include<iostream>
-#inlude<string>
+#include<string>
 
 using namespace std;
 int main()
@@ -21,7 +21,7 @@ cout<<"Enter Book 2 Title:";
 getline(cin,title2);
 
 cout<<"Enter Book 3 ID:";
-cin>id3;
+cin>>id3;
 cin.ignore();
 cout<<"Enter Book 3 Title:";
 getline(cin,title3);
