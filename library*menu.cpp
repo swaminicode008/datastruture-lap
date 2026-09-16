@@ -1,67 +1,82 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
+
 int main()
 {
-int book[10];
-int n=0;
-int choice;
-int searchID;
+    int book[10];
+    int n = 0;
+    int choice;
+    int searchID;
 
-do
-{
-cout<<"\n\n=====SMART LIBRARY=====";
-cout<<"\n1. Add Book";
-cout<<"\n2. Display Books";
-cout<<"\n3. Search Book";
-cout<<"\n4.Exit";
-cout<<"\nEnter your choice:";
-cin>>choice;
-if(choice==1)
+    do
+    {
+        cout << "\n\n===== SMART LIBRARY =====";
+        cout << "\n1. Add Book";
+        cout << "\n2. Display Books";
+        cout << "\n3. Search Book";
+        cout << "\n4. Exit";
+        cout << "\nEnter your choice: ";
+        cin >> choice;
 
-{
-cout<<"Enter Book ID:";
-cin>>book[n];
-n++;
-cout<<"Book Added!";
+        if (choice == 1)
+        {
+            if (n < 10)
+            {
+                cout << "Enter Book ID: ";
+                cin >> book[n];
+                n++;
+                cout << "Book Added!";
+            }
+            else
+            {
+                cout << "Library is full!";
+            }
+        }
+        else if (choice == 2)
+        {
+            cout << "\nBooks in library:\n";
+
+            for (int i = 0; i < n; i++)
+            {
+                cout << book[i] << endl;
+            }
+        }
+        else if (choice == 3)
+        {
+            cout << "Enter Book ID to search: ";
+            cin >> searchID;
+
+            bool found = false;
+
+            for (int i = 0; i < n; i++)
+            {
+                if (book[i] == searchID)
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found)
+            {
+                cout << "Book Found!";
+            }
+            else
+            {
+                cout << "Book Not Found!";
+            }
+        }
+        else if (choice == 4)
+        {
+            cout << "Thank You!";
+        }
+        else
+        {
+            cout << "Invalid Choice!";
+        }
+
+    } while (choice != 4);
+
+    return 0;
 }
-else if(choice ==2)
-{ 
-cout<<"\nBooks in library:\n";
-fot(int i=0;i<n;i++)
-{
-cout<<book[i]<<endl;
-}
-}
-else if (choice==3)
-{
-cout<<"Enter Book ID to search:";
-cin>>searchID;
-bool found=false;
-for(int i=0;i<n;i++)
-{
-if (book[i]==searchID)
-{
-found=true;
-}
-}
-if (found)
-{
-cout<<"Book Found!";
-}
-else
-{
-cout<<"Book Not Found!";
-{
-{
-else if(choice==4)
-{
-cout<<"Thank You!";
-}
-else
-{
-cout<<"Invalid Choice!";
-}
-}
-while (choice!=4)}
-return 0;
-}
+
