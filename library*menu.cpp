@@ -3,80 +3,124 @@ using namespace std;
 
 int main()
 {
-    int book[10];
-    int n = 0;
+    int student[10];      // roll numbers
+    int marks[10];        // marks of each student
+    int n = 0;            // number of students added so far
     int choice;
-    int searchID;
+    int searchRollNo;
 
     do
     {
-        cout << "\n\n===== SMART LIBRARY =====";
-        cout << "\n1. Add Book";
-        cout << "\n2. Display Books";
-        cout << "\n3. Search Book";
-        cout << "\n4. Exit";
-        cout << "\nEnter your choice: ";
+        cout << "\n===== STUDENT MANAGEMENT SYSTEM =====\n";
+        cout << "1. Add student (roll no & marks)\n";
+        cout << "2. Display all student records\n";
+        cout << "3. Search student by roll no\n";
+        cout << "4. Display students from highest to lowest marks\n";
+        cout << "5. Exit\n";
+        cout << "Enter your choice: ";
         cin >> choice;
 
-        if (choice == 1)
+        switch (choice)
         {
-            if (n < 10)
+        case 1:
+            if (n == 10)
             {
-                cout << "Enter Book ID: ";
-                cin >> book[n];
-                n++;
-                cout << "Book Added!";
+                cout << "Student list is full!\n";
             }
             else
             {
-                cout << "Library is full!";
+                cout << "Enter roll no: ";
+                cin >> student[n];
+                cout << "Enter marks: ";
+                cin >> marks[n];
+                n++;
+                cout << "Student added successfully.\n";
             }
-        }
-        else if (choice == 2)
-        {
-            cout << "\nBooks in library:\n";
+            break;
 
-            for (int i = 0; i < n; i++)
+        case 2:
+            if (n == 0)
             {
-                cout << book[i] << endl;
+                cout << "No records found.\n";
             }
-        }
-        else if (choice == 3)
-        {
-            cout << "Enter Book ID to search: ";
-            cin >> searchID;
-
-            bool found = false;
-
-            for (int i = 0; i < n; i++)
+            else
             {
-                if (book[i] == searchID)
+                cout << "\nRoll No\tMarks\n";
+                for (int i = 0; i < n; i++)
                 {
+                    cout << student[i] << "\t" << marks[i] << endl;
+                }
+            }
+            break;
+
+        case 3:
+        {
+            cout << "Enter roll no to search: ";
+            cin >> searchRollNo;
+            bool found = false;
+            for (int i = 0; i < n; i++)
+            {
+                if (student[i] == searchRollNo)
+                {
+                    cout << "Record found -> Roll No: " << student[i]
+                         << ", Marks: " << marks[i] << endl;
                     found = true;
                     break;
                 }
             }
-
-            if (found)
+            if (!found)
             {
-                cout << "Book Found!";
+                cout << "Roll no does not exist.\n";
             }
-            else
-            {
-                cout << "Book Not Found!";
-            }
-        }
-        else if (choice == 4)
-        {
-            cout << "Thank You!";
-        }
-        else
-        {
-            cout << "Invalid Choice!";
+            break;
         }
 
-    } while (choice != 4);
+        case 4:
+        {
+            if (n == 0)
+            {
+                cout << "No records found.\n";
+                break;
+            }
+
+            // copy the data so the original order stays the same
+            int r[10], m[10];
+            for (int i = 0; i < n; i++)
+            {
+                r[i] = student[i];
+                m[i] = marks[i];
+            }
+
+            // bubble sort: highest marks first
+            for (int i = 0; i < n - 1; i++)
+            {
+                for (int j = 0; j < n - i - 1; j++)
+                {
+                    if (m[j] < m[j + 1])
+                    {
+                        int t = m[j]; m[j] = m[j + 1]; m[j + 1] = t;
+                        t = r[j]; r[j] = r[j + 1]; r[j + 1] = t;
+                    }
+                }
+            }
+
+            cout << "\nRoll No\tMarks (Highest to Lowest)\n";
+            for (int i = 0; i < n; i++)
+            {
+                cout << r[i] << "\t" << m[i] << endl;
+            }
+            break;
+        }
+
+        case 5:
+            cout << "Exiting program. Thank you!\n";
+            break;
+
+        default:
+            cout << "Invalid choice! Try again.\n";
+        }
+
+    } while (choice != 5);
 
     return 0;
 }
-
