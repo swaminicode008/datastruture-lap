@@ -3,23 +3,18 @@ using namespace std;
 
 int main()
 {
-    int queue[5];
-    int front=0;
-    int rear=0;
-
-cout<<"Enter 5 customer order numbers:\n";
-
-for(int i=0;i<5;i++)
-{
-cin>>queue[rear];
-rear++;
-}
-
-cout<<"\nProcessing Orders:\n";
- while(front<rear)
- {
-cout<<"Processing Orders:"<<queue[front]<<endl;
-front++;
-}
-return 0;
+    int stack[5];
+    int top=-1;
+    cout<<"Enter 5 cancelled order numbers:\n";
+    for(int i=0;i<5;i++)
+    {
+        cin>>stack[++top];
+    }
+    cout<<"\nRecently cancelled orders:\n";
+    while(top>=0)
+    {
+        cout<<stack[top]<<endl;
+        top--;
+    }
+    return 0;
 }
