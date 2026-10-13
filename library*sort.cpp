@@ -15,7 +15,7 @@ cout<<"\nEnter book ID to search:";
 cin>>searchID;
 for(int i=0;i<5;i++)
 { 
-if(Book[i]==searchID)
+if(Book[i]==searchID);
 {
 found=1;
 }
