@@ -5,7 +5,7 @@ using namespace std;
 int main()
 {
 int marks[5];
-int found=0;
+
 cout<<"Enter marks of 5 students:\n";
 for(int i=0;i<5;i++)
 {
