@@ -14,7 +14,7 @@ cin.ignore();
 cout<<"Enter Book 1 Title:";
 getline(cin,title1);
 
-cout<<"Enter Book 2ID:";
+cout<<"Enter Book 2 ID:";
 cin>>id2;
 cin.ignore();
 cout<<"Enter Book 2 Title:";
@@ -26,11 +26,11 @@ cin.ignore();
 cout<<"Enter Book 3 Title:";
 getline(cin,title3);
 cout<<"\n====Book library====";
-cout<<"\n..Enter id<<id1";
-cout<<"\n..Enter title"<<title1;
-cout<<"\n..Enter id<<id2";
-cout<<"\n..Enter title"<<title2;
-cout<<"\n..Enter id<<id3";
-cout<<"\n..Enter title"<<title3;
+cout<<"\n..Enter id:"<<id1;
+cout<<"\n..Enter title:"<<title1;
+cout<<"\n..Enter id:"<<id2;
+cout<<"\n..Enter title:"<<title2;
+cout<<"\n..Enter id:"<<id3;
+cout<<"\n..Enter title:"<<title3;
 return 0;
 }
