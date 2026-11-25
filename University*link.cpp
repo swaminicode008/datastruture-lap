@@ -56,6 +56,40 @@ hashTable[index]=s;
 
 cout<<"Student Registered Successfully!\n";
 }
+void enrollCourse()
+{
+int roll;
+cout<<"Enter Roll Number:";
+cin>>roll;
+
+int index=hashFunction(roll);
+Student*temp=hashTable[index];
+
+while(temp!=NULL)
+{
+if(temp->roll==roll)
+{
+if(temp->count==10)
+{
+cout<<"Course limit reached!\n";
+return;
+}
+
+cin.ignore(numeric_limits<streamsize>::max(),'\n');
+
+cout<<"Enter Course Name:";
+getline(cin,temp->course[temp->count]);
+
+temp->count++;
+
+cout<<"Course Enrolled Successfully!\n";
+return;
+}
+temp=temp->hashNext;
+}
+
+cout<<"Student not found!\n";
+}
 
 void searchStudent()
 {
@@ -140,40 +174,6 @@ temp=temp->hashNext;
 cout<<"Student not found!\n";
 }
 
-void enrollCourse()
-{
-int roll;
-cout<<"Enter Roll Number:";
-cin>>roll;
-
-int index=hashFunction(roll);
-Student*temp=hashTable[index];
-
-while(temp!=NULL)
-{
-if(temp->roll==roll)
-{
-if(temp->count==10)
-{
-cout<<"Course limit reached!\n";
-return;
-}
-
-cin.ignore(numeric_limits<streamsize>::max(),'\n');
-
-cout<<"Enter Course Name:";
-getline(cin,temp->course[temp->count]);
-
-temp->count++;
-
-cout<<"Course Enrolled Successfully!\n";
-return;
-}
-temp=temp->hashNext;
-}
-
-cout<<"Student not found!\n";
-}
 
 void withdrawCourse()
 {
@@ -266,10 +266,10 @@ do
 {
 cout<<"\n----University Student Registration System----\n";
 cout<<"1.Register Student\n";
-cout<<"2.Search Student\n";
-cout<<"3.Display All Students\n";
-cout<<"4.Update Student\n";
-cout<<"5.Enroll Course\n";
+cout<<"2.Enroll Course\n";
+cout<<"3.Search Student\n";
+cout<<"4.Display All Students\n";
+cout<<"5.Update Student\n";
 cout<<"6.Withdraw Course\n";
 cout<<"7.Remove Student\n";
 cout<<"8.Exit\n";
@@ -281,22 +281,23 @@ switch(choice)
 case 1:
 registerStudent();
 break;
-
+    
 case 2:
-searchStudent();
+enrollCourse();
 break;
 
 case 3:
-displayStudents();
+searchStudent();
 break;
 
 case 4:
-updateStudent();
+displayStudents();
 break;
 
 case 5:
-enrollCourse();
+updateStudent();
 break;
+
 
 case 6:
 withdrawCourse();
